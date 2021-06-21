@@ -20,16 +20,24 @@ module.exports = {
         messageEmbed.react(test2Emoji);
 
         client.on('MessageReactionAdd', async (reaction, user) => {
+            await message.send("Part1");
             if(reaction.message.partial) await reaction.message.fetch();
+            await message.send("Part2");
             if(reaction.partial) await reaction.fetch();
+            await message.send("Part3");
             if(user.bot) return;
+            await message.send("Part4");
             if(!reaction.message.guild) return;
+            await message.send("Part5");
 
             if(reaction.message.channel.id == channel){
+                await message.send("Part6");
                 if(reaction.emoji.name === test1Emoji){
+                    await message.send("Part7");
                     await reaction.message.guild.members.cache.get(user.id).roles.add(test1Role);
                 }if(reaction.emoji.name === test2Emoji){
-                   await reaction.message.guild.members.cache.get(user.id).roles.add(test2Role);
+                    await message.send("Part8");
+                    await reaction.message.guild.members.cache.get(user.id).roles.add(test2Role);
                 }
             } else {
                 return;
